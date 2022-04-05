@@ -9,6 +9,7 @@ export class HeroComponent implements OnInit {
 
   @Input() locaion:string = ''
   @Input() heading:string = ''
+  @Input() heading2:string = ''
   @Input() descr:string = ''
   @Input() imageUrl:string = ''
   @Input() hasButton:boolean = true

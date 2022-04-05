@@ -22,12 +22,14 @@
 .hero_containter .hero_info span{
     font-size: 14px;
     opacity: 0.8;
+    margin-bottom: 0.2rem;
+
 }
 
 .hero_containter .hero_info h2{
-    margin-top: 0.2rem;
     font-size: 36px;
     line-height: 60px;
+    margin: 0;
 }
 
 .hero_containter .hero_info p{
