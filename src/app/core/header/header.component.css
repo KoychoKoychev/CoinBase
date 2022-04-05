@@ -5,7 +5,7 @@ header {
     padding: 0 1rem 0 2rem;
     position: absolute;
     top: 0;
-    width: calc(100vw - 3rem);
+    width: calc(100vw - 3rem) !important;
     height: 6rem;
     position: sticky;
     background-color: white;
