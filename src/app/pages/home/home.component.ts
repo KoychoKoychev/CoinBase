@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PriceService } from 'src/app/core/price.service';
 
 @Component({
   selector: 'app-home',
@@ -63,9 +64,30 @@ export class HomeComponent implements OnInit {
     },
   ]
 
-  constructor() { }
+  currentPrices:any = {
+    BTC_sell: 'NaN',
+    BTC_buy: 'NaN',
+    ETH_sell: 'NaN',
+    ETH_buy: 'NaN',
+  }
+
+  apiErrors:string = ''
+
+  constructor(private priceService:PriceService) { }
 
   ngOnInit(): void {
+    this.priceService.getPrices().subscribe(
+      response => {
+        this.currentPrices.BTC_sell = Number(response.rates.BTC*1.1).toFixed(0)
+        this.currentPrices.BTC_buy = Number(response.rates.BTC*0.9).toFixed(0)
+        this.currentPrices.ETH_sell = Number(response.rates.ETH*1.1).toFixed(0)
+        this.currentPrices.ETH_buy = Number(response.rates.ETH*0.9).toFixed(0)
+      },
+      err => {
+        this.apiErrors = err.message
+        console.error(err)
+      }
+    )
   }
 
 }

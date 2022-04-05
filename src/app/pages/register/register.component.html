@@ -8,29 +8,29 @@
         <input type="text" name="username" id="username" placeholder="Username"
         ngModel pattern="[A-Za-z]+" #username="ngModel" required>
 
-        <p class="error" *ngIf="username.invalid && username.touched">
-            Username must include only letters.
+        <p class="error" *ngIf="username.invalid && username.touched && username.control.errors">
+            {{username.control.errors['pattern'] ? 'Username must include only letters.' : 'Username is required!'}}
         </p>
 
         <input type="email" name="email" id="email" placeholder="Email"
         ngModel email #email="ngModel" required>
 
-        <p class="error" *ngIf="email.invalid && email.touched">
-            Your email address must be valid.
+        <p class="error" *ngIf="email.invalid && email.touched && email.control.errors">
+            {{email.control.errors['email'] ? 'Your email address must be valid.' : 'Email is required!'}}
         </p>
 
         <input type="password" name="password" id="password" placeholder="Password"
         ngModel minlength="6" #password="ngModel" required>
 
-        <p class="error" *ngIf="password.invalid && password.touched">
-            Passowrd must be at least 6 characters long.
+        <p class="error" *ngIf="password.invalid && password.touched && password.control.errors">
+            {{password.control.errors['minlength'] ? 'Passowrd must be at least 6 characters long.' : 'Password is required!'}}
         </p>
 
         <input type="password" name="rePass" id="rePass" placeholder="Confirm Password"
         ngModel [pattern]="password.value" #rePass="ngModel" required>
 
-        <p class="error" *ngIf="rePass.invalid && rePass.touched">
-            Passowrds don't match.
+        <p class="error" *ngIf="rePass.invalid && rePass.touched && rePass.control.errors">
+            {{rePass.control.errors['pattern'] ? 'Passowrds don\'t match.' : 'Confirm password is required!'}}
         </p>
         <button class="primary_button" type="submit" [disabled]="registerForm.invalid">SIGN UP</button>
     </form>
