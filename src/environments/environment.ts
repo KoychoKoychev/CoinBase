@@ -11,7 +11,7 @@ export const environment = {
     "X-Parse-Revocable-Session": "1",
     "Content-Type": "application/json"
   },
-  priceApiUrl: 'http://api.coinlayer.com/api/live?access_key=4e752aca0aae4eef10658f7ee03242d0',
+  priceApiUrl: 'https://api.nomics.com/v1/currencies/ticker?key=c040ff1f61826b477b5c5510f9e0e2651f2b6c30&ids=BTC,ETH',
 };
 
 /*

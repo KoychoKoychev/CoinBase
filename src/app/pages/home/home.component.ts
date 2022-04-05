@@ -78,10 +78,10 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.priceService.getPrices().subscribe(
       response => {
-        this.currentPrices.BTC_sell = Number(response.rates.BTC*1.1).toFixed(0)
-        this.currentPrices.BTC_buy = Number(response.rates.BTC*0.9).toFixed(0)
-        this.currentPrices.ETH_sell = Number(response.rates.ETH*1.1).toFixed(0)
-        this.currentPrices.ETH_buy = Number(response.rates.ETH*0.9).toFixed(0)
+        this.currentPrices.BTC_sell = Number(response[0].price*1.1).toFixed(0)
+        this.currentPrices.BTC_buy = Number(response[0].price*0.9).toFixed(0)
+        this.currentPrices.ETH_sell = Number(response[1].price*1.1).toFixed(0)
+        this.currentPrices.ETH_buy = Number(response[1].price*0.9).toFixed(0)
       },
       err => {
         this.apiErrors = err.message
