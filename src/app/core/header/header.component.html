@@ -18,7 +18,7 @@
         </a>
     </ul>
     <div class="actions">
-        <ul class="nav">
+        <ul class="nav" *ngIf="hasUser">
             <a href="#">
                 <li>Sell Bitcoin</li>
             </a>
@@ -26,12 +26,17 @@
                 <li>Sell Giftcard</li>
             </a>
         </ul>
-        <ul class="auth">
+        <ul class="auth" *ngIf="!hasUser">
             <a href="/login" class="primary_button">
                 <li>Login</li>
             </a>
             <a href="/register" class="primary_button">
                 <li>Register</li>
+            </a>
+        </ul>
+        <ul class="auth" *ngIf="hasUser">
+            <a href="#" (click)="onLogout()" class="primary_button">
+                <li>Logout</li>
             </a>
         </ul>
     </div>

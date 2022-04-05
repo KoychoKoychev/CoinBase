@@ -9,25 +9,23 @@ export class AuthService {
 
   localStorage = localStorage;
 
-
   constructor(public http: HttpClient) { }
 
   public hasUser(): boolean {
-    if (this.localStorage.getItem('user')) {
+    if (this.localStorage.getItem('userId')) {
       return true;
     } else {
       return false;
     }
   }
 
-
-  register (body: IUserData): Observable<any> {
-    const headers = {
-      "X-Parse-Application-Id": "DrLUWya6WmD9ni2YZ2Yi1dXzGraaQiyEArZT7oop",
-      "X-Parse-REST-API-Key": "Oquz726iAu0T1Gfyrjduh6d6diipGKs10g16yAvU",
-      "X-Parse-Revocable-Session": "1",
-      "Content-Type": "application/json"
-    }
-    return this.http.post(environment.apiUrl + '/users', body, { headers } );
+  public register(body: IUserData): Observable<any> {
+    return this.http.post(environment.apiUrl + '/users', body, { headers: environment.requestHeaders });
+  }
+  public login(body: any): Observable<any> {
+    return this.http.get(environment.apiUrl + '/login' + `?username=${body.username}&password=${body.password}`, { headers: environment.requestHeaders });
+  }
+  public logout():void{
+    this.localStorage.clear();
   }
 }

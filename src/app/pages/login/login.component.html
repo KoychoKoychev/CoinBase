@@ -3,10 +3,23 @@
     <div class="login_wrapper">
     <h3>Welcome back!</h3>
     <span>Kindly fill in your login details to proceed</span>
-    <form action="" class="login_form">
-        <input type="text" name="username" id="username" placeholder="Username">
-        <input type="password" name="password" id="password" placeholder="Password">
-        <button class="primary_button" type="submit">Login</button>
+    <p class="error" *ngIf="errors">{{errors}}</p>
+    <form  #loginForm="ngForm" (ngSubmit)="onSubmit()" action="" class="login_form">
+        <input type="text" name="username" id="username" placeholder="Username"
+        ngModel pattern="[A-Za-z]+" #username="ngModel" required>
+
+        <p class="error" *ngIf="username.invalid && username.touched && username.control.errors">
+            {{username.control.errors['pattern'] ? 'Username must include only letters.' : 'Username is required!'}}
+        </p>
+
+        <input type="password" name="password" id="password" placeholder="Password"
+        ngModel minlength="6" #password="ngModel" required>
+
+        <p class="error" *ngIf="password.invalid && password.touched && password.control.errors">
+            {{password.control.errors['minlength'] ? 'Passowrd must be at least 6 characters long.' : 'Password is required!'}}
+        </p>
+
+        <button class="primary_button" [disabled]="loginForm.invalid" type="submit">Login</button>
     </form>
     <p>Don't have an account yet? <a href="/register">Sign Up</a></p>
 </div>

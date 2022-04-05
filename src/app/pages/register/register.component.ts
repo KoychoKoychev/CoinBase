@@ -27,10 +27,21 @@ export class RegisterComponent implements OnInit {
       'email': this.form.value.email,
       'password': this.form.value.password,
     }
-    this.authService.register(data).subscribe(response => {
-      localStorage.setItem('accessToken', response.sessionToken);
-      localStorage.setItem('userId', response.objectId);
-      this.router.navigate(['/home'])
-    })
+    this.authService.register(data).subscribe(
+      response => {
+        localStorage.setItem('accessToken', response.sessionToken);
+        localStorage.setItem('userId', response.objectId);
+        this.router.navigate(['/home'])
+      },
+      err => {
+        this.form.setValue({
+          'username': this.form.value.username,
+          'email': this.form.value.email,
+          'password': '',
+          'rePass': '',
+        })
+        this.errors = err.error.error;
+      }
+    )
   }
 }

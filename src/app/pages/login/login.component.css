@@ -23,7 +23,7 @@ background-clip: text;
     width: 350px;
     height: 20px;
     padding: 20px;
-    margin: 45px auto;
+    margin: 35px auto;
     border-radius: 5px;
     border-color: darkgray;
 }
@@ -42,6 +42,11 @@ background-clip: text;
     border: none;
 }
 
+.login_form button:disabled{
+    color: darkgray;
+    background: lightgray;
+}
+
 .login_container a{
     text-decoration: underline;
     font-weight: 700;
@@ -54,4 +59,9 @@ input.ng-valid {
   
 input.ng-invalid.ng-touched {
     border: 3px solid #A94442; /* red */
+}
+
+.error{
+    color: red;
+    font-size: 16px;
 }
