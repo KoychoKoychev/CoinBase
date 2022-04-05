@@ -30,6 +30,6 @@ export class AuthService {
   }
 
   public postContact(data:any): Observable<any> {
-    return this.http.post("https://formsubmit.co/7164b78e0501d917bb8fa662850ca43a",data)
+    return this.http.post("https://formsubmit.co/koicho3@gmail.com",data)
   }
 }

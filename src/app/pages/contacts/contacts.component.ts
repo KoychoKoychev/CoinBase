@@ -17,9 +17,16 @@ export class ContactsComponent implements OnInit {
   ngOnInit(): void {
   }
   onClick():void{
+    const data = {
+      'username':this.form.value.username,
+      'email':this.form.value.email,
+      'text':this.form.value.text
+    }
 
-    this.authService.postContact(this.form.value).subscribe(
-      response => this.form.resetForm(),
+    this.authService.postContact(data).subscribe(
+      response => {
+        this.formSubmitted = true;
+        this.form.resetForm()},
       err => console.log(err)     
     )
   }
