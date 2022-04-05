@@ -28,4 +28,10 @@ export class AuthService {
   public logout():void{
     this.localStorage.clear();
   }
+
+  public postContact(): Observable<any> {
+    return this.http.post("https://formsubmit.co/koicho3@gmail.com", 
+    {"name":"testname", "email":"test@abv.bg", "text":"This is a test text"}
+    )
+  }
 }
