@@ -48,3 +48,34 @@ p{
 .contact_map{
     background: linear-gradient(174.48deg, #FD749B -12.41%, #281AC8 88.56%);
 }
+
+.success{
+    text-align: center;
+    color: rgb(15, 202, 15);
+}
+
+.success i {
+    font-size: 50px;
+    vertical-align: middle;
+}
+
+input.ng-valid {
+    border: 2px solid #42A948; /* green */
+}
+  
+input.ng-invalid.ng-touched {
+    border: 2px solid #A94442; /* red */
+}
+
+textarea.ng-valid {
+    border: 2px solid #42A948; /* green */
+}
+  
+textarea.ng-invalid.ng-touched {
+    border: 2px solid #A94442; /* red */
+}
+
+.error{
+    color: red;
+    font-size: 16px;
+}
