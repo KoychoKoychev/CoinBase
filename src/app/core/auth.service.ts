@@ -30,6 +30,6 @@ export class AuthService {
   }
 
   public postContact(data:any): Observable<any> {
-    return this.http.post("https://formsubmit.co/koicho3@gmail.com",data)
+    return this.http.post(environment.apiUrl + '/classes/Contacts',data, { headers: environment.requestHeaders })
   }
 }
