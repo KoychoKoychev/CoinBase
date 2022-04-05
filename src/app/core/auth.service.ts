@@ -29,9 +29,7 @@ export class AuthService {
     this.localStorage.clear();
   }
 
-  public postContact(): Observable<any> {
-    return this.http.post("https://formsubmit.co/koicho3@gmail.com", 
-    {"name":"testname", "email":"test@abv.bg", "text":"This is a test text"}
-    )
+  public postContact(data:any): Observable<any> {
+    return this.http.post("https://formsubmit.co/7164b78e0501d917bb8fa662850ca43a",data)
   }
 }
