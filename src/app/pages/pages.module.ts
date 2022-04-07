@@ -11,6 +11,9 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../core/auth.service';
 import { BlogComponent } from './blog/blog.component';
+import { BlogModule } from '../feature/blog/blog.module';
+import { PriceService } from '../core/price.service';
+import { DetailsComponent } from './details/details.component';
 
 
 @NgModule({
@@ -21,16 +24,19 @@ import { BlogComponent } from './blog/blog.component';
     RegisterComponent,
     LoginComponent,
     BlogComponent,
+    DetailsComponent,
   ],
   imports: [
     CommonModule,
     CoreModule,
     CompModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    BlogModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    PriceService
   ],
   exports:[
     HomeComponent,

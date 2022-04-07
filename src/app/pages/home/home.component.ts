@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { IBlogPost } from 'src/app/core/interfaces/blogPost';
 import { PriceService } from 'src/app/core/price.service';
+import { BlogService } from 'src/app/feature/blog/blog.service';
 
 @Component({
   selector: 'app-home',
@@ -43,26 +45,7 @@ export class HomeComponent implements OnInit {
     }
   ]
 
-  blogPostsArr: any = [
-    {
-      created_at: new Date().toLocaleDateString('en-GB'),
-      title: 'ETH TO NAIRA EXCHANGE RATE IS NOT #400 PER A SINGLE COIN',
-      category: 'Business',
-      content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged'
-    },
-    {
-      created_at: new  Date().toLocaleDateString('en-GB'),
-      title: 'ETH TO NAIRA EXCHANGE RATE IS NOT #400 PER A SINGLE COIN',
-      category: 'Business',
-      content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged'
-    },
-    {
-      created_at: new Date().toLocaleDateString('en-GB'),
-      title: 'ETH TO NAIRA EXCHANGE RATE IS NOT #400 PER A SINGLE COIN',
-      category: 'Business',
-      content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged'
-    },
-  ]
+  blogPostsArr: IBlogPost[] = []
 
   currentPrices:any = {
     BTC_sell: 'NaN',
@@ -73,7 +56,7 @@ export class HomeComponent implements OnInit {
 
   apiErrors:string = ''
 
-  constructor(private priceService:PriceService) { }
+  constructor(private priceService:PriceService, private blogService: BlogService) { }
 
   ngOnInit(): void {
     this.priceService.getPrices().subscribe(
@@ -86,6 +69,11 @@ export class HomeComponent implements OnInit {
       err => {
         this.apiErrors = err.message
         console.error(err)
+      }
+    )
+    this.blogService.getAllPosts().subscribe(
+      response => {
+        this.blogPostsArr = response.results.slice(0,3);
       }
     )
   }

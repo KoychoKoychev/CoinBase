@@ -1,0 +1,19 @@
+<app-header currentPage="blog"></app-header>
+
+<div class="post_hero" *ngIf="post">
+    <img [src]="post.imgUrl" alt="hero image">
+    <div class="post_title">
+        <h2>{{post.title}}</h2>
+        <div class="post_info">
+            <span>{{display_date | date}} |</span>
+            <span> {{post.category}}</span>
+        </div>
+    </div>
+</div>
+
+<p class="post_content" *ngFor="let paragraph of postParagraphs">{{paragraph}}</p>
+<div class="socials">
+    <span>Share with</span><i class="fab fa-facebook"></i><i class="fab fa-twitter"></i><i class="fab fa-youtube"></i>
+</div>
+
+<app-footer></app-footer>

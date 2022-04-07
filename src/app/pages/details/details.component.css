@@ -1,0 +1,72 @@
+.post_hero {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    -webkit-box-shadow: inset 25px 25px 30px 15px rgba(0, 0, 0, 0.35);
+    box-shadow: inset 25px 25px 30px 15px rgba(0, 0, 0, 0.35);
+}
+
+.post_hero img {
+    width: 100%;
+    vertical-align: middle;
+    z-index: -1;
+}
+
+.post_hero .post_title {
+    position: absolute;
+}
+
+.post_hero h2 {
+    font-size: 1.6rem;
+    color: white;
+    text-shadow: 0px 0px 15px #000000;
+}
+
+.post_hero span {
+    text-align: center;
+    font-size: 16px;
+    color: white;
+    text-shadow: 0px 0px 10px #000000;
+}
+
+.post_info{
+    text-align: center;
+}
+
+.post_content{
+    width: 65vw;
+    text-align: left;
+    margin: 55px auto 0 auto;
+    text-indent: 5rem;
+    line-height: 1.6;
+}
+
+.socials{
+    width: 65vw;
+    text-align: right;
+    margin: 20px auto;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.socials i{
+    font-size: 2rem;
+    vertical-align: middle;
+    margin: 0px 10px;
+}
+
+.socials .fa-facebook{
+    color: #272EAE;
+}
+
+.socials .fa-twitter{
+    color: #1590D8;
+}
+
+.socials .fa-youtube{
+    color: #D0021B;
+}

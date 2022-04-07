@@ -13,6 +13,8 @@ export class HeroComponent implements OnInit {
   @Input() descr:string = ''
   @Input() imageUrl:string = ''
   @Input() hasButton:boolean = true
+  @Input() button_text:string = 'GET STARTED'
+
 
   constructor() { }
 
