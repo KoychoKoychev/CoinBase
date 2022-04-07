@@ -9,8 +9,10 @@ export class BlogCardComponent implements OnInit {
 
   @Input() title:string = '';
   @Input() category:string = '';
-  @Input() date:string = '';
+  @Input() date:any = '';
   @Input() content:string = '';
+  @Input() postId:string = '';
+
 
   constructor() { }
 

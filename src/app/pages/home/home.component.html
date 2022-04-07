@@ -106,8 +106,8 @@
     <h3>Our blog</h3>
     <p>Get to know the latest stuff via our blog post.</p>
     <div class="blog_post_cards">
-        <app-blog-card *ngFor="let post of blogPostsArr" [category]="post.category" [date]="post.created_at"
-            [title]="post.title" [content]="post.content">
+        <app-blog-card *ngFor="let post of blogPostsArr" [category]="post.category" [date]="post.createdAt | date"
+            [title]="post.title" [content]="post.content" [postId]="post.objectId">
         </app-blog-card>
     </div>
 </div>

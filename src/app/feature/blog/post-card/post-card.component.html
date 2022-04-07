@@ -1,1 +1,14 @@
-<p>post-card works!</p>
+<div class="post_card_container">
+    <div class="post_image_wrapper">
+        <img [src]="imgUrl" alt="main image">
+    </div>
+    <div class="post_card_content">
+        <h2>{{title}}</h2>
+        <div class="post_card_info">
+            <span>{{display_date | date}} |</span>
+            <span> {{category}}</span>
+        </div>
+        <p>{{content}}</p>
+        <a [routerLink]="['/posts',postId]" class="primary_button">READ MORE</a>
+    </div>
+</div>

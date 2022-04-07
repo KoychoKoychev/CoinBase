@@ -8,10 +8,11 @@
     color: aliceblue;
     background: linear-gradient(174.48deg, #FD749B -12.41%, #281AC8 88.56%);
     border-radius: 150px 0 150px 0;
+    overflow: hidden;
 }
 
 .hero_containter img{
-    width: 650px;
+    width: 600px;
 }
 
 .hero_containter .hero_info{
@@ -21,12 +22,14 @@
 .hero_containter .hero_info span{
     font-size: 14px;
     opacity: 0.8;
+    margin-bottom: 0.2rem;
+
 }
 
 .hero_containter .hero_info h2{
-    margin-top: 0.2rem;
     font-size: 36px;
     line-height: 60px;
+    margin: 0;
 }
 
 .hero_containter .hero_info p{

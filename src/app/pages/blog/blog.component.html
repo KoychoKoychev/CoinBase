@@ -1,4 +1,14 @@
 <app-header currentPage="blog"></app-header>
-
+<app-hero locaion='Blog' heading='Stay updated,' heading2="Never miss a post."
+    descr='Get to know the latest stuff about our services via our blog post.'
+    imageUrl='/assets/images/4289dffedf6279f56162a73c571e14ad.png' [hasButton]="hasUser" button_text="CREATE NEW POST">
+</app-hero>
+<app-post-card *ngFor="let post of postsArr" 
+[imgUrl]="post.imgUrl" 
+[title]="post.title" 
+[created_at]="post.createdAt"
+[category]="post.category" 
+[content]="post.content" 
+[postId]="post.objectId">
+</app-post-card>
 <app-footer></app-footer>
-

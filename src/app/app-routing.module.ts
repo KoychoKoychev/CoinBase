@@ -2,6 +2,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './pages/about/about.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { ContactsComponent } from './pages/contacts/contacts.component';
+import { DetailsComponent } from './pages/details/details.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -10,7 +11,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'home'
+    component: HomeComponent
   },
   {
     path: 'home',
@@ -36,6 +37,10 @@ const routes: Routes = [
     path: 'blog',
     component: BlogComponent
   },
+  {
+    path: 'posts/:postId',
+    component: DetailsComponent
+  }
 ];
 
-export const AppRoutingModule = RouterModule.forRoot(routes)
+export const AppRoutingModule = RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })
