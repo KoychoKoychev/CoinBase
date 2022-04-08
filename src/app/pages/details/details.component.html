@@ -13,7 +13,41 @@
 
 <p class="post_content" *ngFor="let paragraph of postParagraphs">{{paragraph}}</p>
 <div class="socials">
-    <span>Share with</span><i class="fab fa-facebook"></i><i class="fab fa-twitter"></i><i class="fab fa-youtube"></i>
+    <div>
+        <span>Share with</span><i class="fab fa-facebook"></i><i class="fab fa-twitter"></i><i class="fab fa-youtube"></i>
+    </div>
+    <div *ngIf="isAuthor">
+        <button class="primary_button">EDIT</button>
+        <button class="primary_button">DELETE</button>
+    </div>
+</div>
+
+
+
+<div class="comment_section">
+    <h3>Comments:</h3>
+    <div *ngIf="postComments.length>0">
+        <app-comment *ngFor="let comment of postComments" [author]="comment.authorName" [content]="comment.content">
+        </app-comment>
+    </div>
+    <div *ngIf="postComments.length==0">
+        <p>No comments yet. Be the first one to share your thoughts on this post. </p>
+    </div>
+</div>
+
+<div class="comments_form">
+    <h3>Leave a Comment</h3>
+    <p>Your email address will not be published. Required fields are marked with *</p>
+    <form *ngIf="!formSubmitted" #commentsForm="ngForm" class="contact_form" action="" method="">
+        <input type="text" placeholder="Name *" name="name" ngModel #name="ngModel" required>
+        <input type="email" placeholder="Email *" name="email" ngModel #email="ngModel" email required>
+        <textarea placeholder="Your Comment" name="text" ngModel #text="ngModel" required></textarea>
+        <button type="button" (click)="onClick()" [disabled]="commentsForm.invalid"
+            class="primary_button">Publish</button>
+    </form>
+    <div *ngIf="formSubmitted">
+        <h3 class="success">Your comment has successfully been submitted! <i class="fas fa-check-circle"></i></h3>
+    </div>
 </div>
 
 <app-footer></app-footer>

@@ -8,7 +8,7 @@
     <input type="text" placeholder="Name *" name="name" ngModel #name="ngModel" required>
     <input type="email" placeholder="Email *" name="email" ngModel #email="ngModel" email required>
     <textarea placeholder="Your Comment" name="text" ngModel #text="ngModel" required></textarea>
-    <button type="button" (click)="onClick()" class="primary_button">Publish</button>
+    <button type="button" [disabled]="contactsForm.invalid" (click)="onClick()" class="primary_button">Publish</button>
 </form>
 <div *ngIf="formSubmitted">
     <h3 class="success">Your feedback has successfully been submitted! <i class="fas fa-check-circle"></i></h3>

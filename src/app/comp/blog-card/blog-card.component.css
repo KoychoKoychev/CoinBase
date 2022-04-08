@@ -34,6 +34,8 @@
     font-size: 24px;
     line-height: 39px;
     margin-bottom: 0px;
+    text-transform: uppercase;
+    height: 80px;
     background: linear-gradient(178.18deg, #FD749B -13.56%, #281AC8 158.3%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;

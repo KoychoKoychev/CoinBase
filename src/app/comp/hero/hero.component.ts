@@ -14,6 +14,7 @@ export class HeroComponent implements OnInit {
   @Input() imageUrl:string = ''
   @Input() hasButton:boolean = true
   @Input() button_text:string = 'GET STARTED'
+  @Input() button_link:string = '/blog'
 
 
   constructor() { }

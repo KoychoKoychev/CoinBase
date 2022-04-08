@@ -1,0 +1,15 @@
+.comment{
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #AF53AB;
+    margin-bottom: 5px;
+}
+
+
+.comment h3{
+    display: inline-block;
+}
+
+.comment p{
+    margin-left: 1rem;
+}

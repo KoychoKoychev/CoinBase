@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/core/auth.service';
 import { IBlogPost } from 'src/app/core/interfaces/blogPost';
+import { IPostComments } from 'src/app/core/interfaces/postComment';
 import { BlogService } from 'src/app/feature/blog/blog.service';
-declare function require(name:string):any;
+declare function require(name: string): any;
 const chunk = require('lodash.chunk');
 
 @Component({
@@ -12,24 +15,62 @@ const chunk = require('lodash.chunk');
 })
 export class DetailsComponent implements OnInit {
 
+  @ViewChild('commentsForm') form!: NgForm
   post!: IBlogPost
   display_date: any
   postParagraphs: string[] = []
+  formSubmitted: boolean = false
+  postComments: IPostComments[] = []
+  isAuthor: boolean = false
 
 
-  constructor(private blogService: BlogService, private activateRoute: ActivatedRoute) { }
+  constructor(private blogService: BlogService, private activateRoute: ActivatedRoute, private authService: AuthService) { }
 
   ngOnInit(): void {
+
     const postId = this.activateRoute.snapshot.params['postId'];
 
     this.blogService.getCurrentPosts(postId).subscribe(
       response => {
         this.post = response
         this.display_date = new Date(response.createdAt);
-        this.postParagraphs = chunk(response.content.split('. ').map( (el: string) => el +'.'), 5)
-                              .map((el:string[])=>el.join(' '));
+        this.postParagraphs = chunk(response.content.split('. ').map((el: string) => el + '.'), 15)
+          .map((el: string[]) => el.join(' '));
+        if (this.authService.hasUser()) {
+          console.log(this.post.authorId);
+          console.log(this.authService.getUserId());
+
+          if (this.post.authorId == this.authService.getUserId()) {
+            this.isAuthor = true;
+          }
+        }
+      }
+    )
+
+    this.blogService.getComments(postId).subscribe(
+      response => {
+        this.postComments = response.results
       }
     )
   }
 
+  public onClick(): void {
+    this.formSubmitted = true;
+    const postId = this.post.objectId;
+    const data = {
+      postId: postId,
+      authorName: this.form.value.name,
+      authorEmail: this.form.value.email,
+      content: this.form.value.text
+    }
+    this.blogService.postComments(data).subscribe(
+      response => {
+        this.blogService.getComments(postId).subscribe(
+          response => {
+            this.postComments = response.results
+          }
+        )
+      }
+    );
+  }
 }

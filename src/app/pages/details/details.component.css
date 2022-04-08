@@ -51,7 +51,11 @@
     margin: 20px auto;
     font-weight: 700;
     font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
 }
+
 
 .socials i{
     font-size: 2rem;
@@ -69,4 +73,85 @@
 
 .socials .fa-youtube{
     color: #D0021B;
+}
+
+.comments_form{
+    width: 65vw;
+    margin: 0 auto;
+}
+
+.comments_form button{
+    border: none;
+    display: block;
+    margin: 20px 0px;
+}
+
+button:disabled{
+    color: darkgray;
+    background: lightgray;
+}
+
+.comments_form input{
+    width: 320px;
+    height: 40px;
+    border-radius: 5px;
+    margin: 20px 20px 20px 0px;
+    padding: 10px 20px;
+}
+
+.comments_form textarea{
+    display: block;
+    width: 710px;
+    height: 15em;
+    resize: none;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.success{
+    text-align: center;
+    color: rgb(15, 202, 15);
+}
+
+.success i {
+    font-size: 50px;
+    vertical-align: middle;
+}
+
+input.ng-valid {
+    border: 2px solid #42A948; /* green */
+}
+  
+input.ng-invalid.ng-touched {
+    border: 2px solid #A94442; /* red */
+}
+
+textarea.ng-valid {
+    border: 2px solid #42A948; /* green */
+}
+  
+textarea.ng-invalid.ng-touched {
+    border: 2px solid #A94442; /* red */
+}
+
+.error{
+    color: red;
+    font-size: 16px;
+}
+
+.comment_section{
+    width: 65vw;
+    margin: 0 auto;
+    border: 1px solid lightgray;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.comment_section h3{
+    font-size: 1.5rem;
+    margin: 0px;
+    background: linear-gradient(178.18deg, #FD749B -13.56%, #281AC8 158.3%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    background-clip: text;
 }

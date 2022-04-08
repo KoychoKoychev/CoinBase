@@ -19,6 +19,14 @@ export class AuthService {
     }
   }
 
+  public getUserId():string{
+    if(this.localStorage.getItem('userId')){
+      return JSON.stringify(this.localStorage.getItem('userId'))
+    }else{
+      return 'Invalid user id';
+    }
+  }
+
   public register(body: IUserData): Observable<any> {
     return this.http.post(environment.apiUrl + '/users', body, { headers: environment.requestHeaders });
   }
