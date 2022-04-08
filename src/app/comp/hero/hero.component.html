@@ -4,7 +4,7 @@
         <h2>{{heading}}</h2>
         <h2>{{heading2}}</h2>
         <p>{{descr}}</p>
-        <a routerLink="/blog"><button *ngIf="hasButton">{{button_text}}</button></a>
+        <a [routerLink]="button_link"><button *ngIf="hasButton">{{button_text}}</button></a>
     </div>
     <img [src]="imageUrl" alt="hero image">
 </div>

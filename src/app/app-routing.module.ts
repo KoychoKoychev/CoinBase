@@ -2,6 +2,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './pages/about/about.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { ContactsComponent } from './pages/contacts/contacts.component';
+import { CreateBlogPostComponent } from './pages/create-blog-post/create-blog-post.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -40,6 +41,10 @@ const routes: Routes = [
   {
     path: 'posts/:postId',
     component: DetailsComponent
+  },
+  {
+    path: 'blog/create',
+    component: CreateBlogPostComponent
   }
 ];
 

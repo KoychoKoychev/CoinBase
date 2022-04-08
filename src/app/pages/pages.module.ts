@@ -14,6 +14,7 @@ import { BlogComponent } from './blog/blog.component';
 import { BlogModule } from '../feature/blog/blog.module';
 import { PriceService } from '../core/price.service';
 import { DetailsComponent } from './details/details.component';
+import { CreateBlogPostComponent } from './create-blog-post/create-blog-post.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { DetailsComponent } from './details/details.component';
     LoginComponent,
     BlogComponent,
     DetailsComponent,
+    CreateBlogPostComponent,
   ],
   imports: [
     CommonModule,

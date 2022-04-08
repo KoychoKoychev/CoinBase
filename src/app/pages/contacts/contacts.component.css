@@ -79,3 +79,8 @@ textarea.ng-invalid.ng-touched {
     color: red;
     font-size: 16px;
 }
+
+button:disabled{
+    color: darkgray;
+    background: lightgray;
+}
