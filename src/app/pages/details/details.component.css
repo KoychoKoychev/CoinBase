@@ -63,6 +63,14 @@
     margin: 0px 10px;
 }
 
+.socials button{
+    border: none;
+}
+
+.socials a{
+    line-height: 2.75em;
+}
+
 .socials .fa-facebook{
     color: #272EAE;
 }

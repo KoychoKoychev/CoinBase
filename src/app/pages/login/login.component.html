@@ -13,10 +13,10 @@
         </p>
 
         <input type="password" name="password" id="password" placeholder="Password"
-        ngModel minlength="6" #password="ngModel" required>
+        ngModel #password="ngModel" required>
 
         <p class="error" *ngIf="password.invalid && password.touched && password.control.errors">
-            {{password.control.errors['minlength'] ? 'Passowrd must be at least 6 characters long.' : 'Password is required!'}}
+            'Password is required!'
         </p>
 
         <button class="primary_button" [disabled]="loginForm.invalid" type="submit">Login</button>

@@ -37,4 +37,12 @@ export class BlogService {
   public createPost(postData: any): Observable<any> {
     return this.http.post(environment.apiUrl + '/classes/Posts/', postData, { headers: environment.requestHeaders })
   }
+
+  public editPost(postData: any, postId: string): Observable<any> {
+    return this.http.put(environment.apiUrl + '/classes/Posts/' + postId, postData, { headers: environment.requestHeaders })
+  }
+
+  public deletePost(postId: string): Observable<any> {
+    return this.http.delete(environment.apiUrl + '/classes/Posts/' + postId, { headers: environment.requestHeaders })
+  }
 }
