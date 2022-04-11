@@ -3,7 +3,10 @@ import { AboutComponent } from './pages/about/about.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { ContactsComponent } from './pages/contacts/contacts.component';
 import { CreateBlogPostComponent } from './pages/create-blog-post/create-blog-post.component';
+import { CryptoMarketComponent } from './pages/crypto-market/crypto-market.component';
 import { DetailsComponent } from './pages/details/details.component';
+import { EditBlogPostComponent } from './pages/edit-blog-post/edit-blog-post.component';
+import { GiftcardMarketComponent } from './pages/giftcard-market/giftcard-market.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -39,13 +42,25 @@ const routes: Routes = [
     component: BlogComponent
   },
   {
+    path: 'posts/edit/:postId',
+    component: EditBlogPostComponent
+  },
+  {
     path: 'posts/:postId',
     component: DetailsComponent
   },
   {
     path: 'blog/create',
     component: CreateBlogPostComponent
-  }
+  },
+  {
+    path: 'market/giftcards',
+    component: GiftcardMarketComponent
+  },
+  {
+    path: 'market/crypto',
+    component: CryptoMarketComponent
+  },
 ];
 
 export const AppRoutingModule = RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })

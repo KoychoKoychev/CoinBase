@@ -15,6 +15,10 @@ import { BlogModule } from '../feature/blog/blog.module';
 import { PriceService } from '../core/price.service';
 import { DetailsComponent } from './details/details.component';
 import { CreateBlogPostComponent } from './create-blog-post/create-blog-post.component';
+import { EditBlogPostComponent } from './edit-blog-post/edit-blog-post.component';
+import { GiftcardMarketComponent } from './giftcard-market/giftcard-market.component';
+import { CryptoMarketComponent } from './crypto-market/crypto-market.component';
+
 
 
 @NgModule({
@@ -27,6 +31,10 @@ import { CreateBlogPostComponent } from './create-blog-post/create-blog-post.com
     BlogComponent,
     DetailsComponent,
     CreateBlogPostComponent,
+    EditBlogPostComponent,
+    GiftcardMarketComponent,
+    CryptoMarketComponent,
+
   ],
   imports: [
     CommonModule,

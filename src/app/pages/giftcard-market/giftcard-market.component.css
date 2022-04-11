@@ -1,0 +1,86 @@
+.giftcard_container {
+    width: 65vw;
+    text-align: center;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.giftcard_container select,
+.giftcard_container input {
+    display: block;
+    height: 60px;
+    padding-left: 20px;
+    border-radius: 15px;
+    margin: 30px auto;
+    border: 1px solid black;
+
+}
+
+.giftcard_container select {
+    width: 480px;
+}
+
+.giftcard_container input {
+    width: 460px;
+}
+
+.giftcard_container .total_price {
+    position: relative;
+}
+
+.giftcard_container .total_price input.total_value {
+    display: inline;
+    width: 190px;
+    background-color: white;
+    border: 2px dashed #AF53AB;
+    color: #AF53AB;
+    font-size: 1.3rem
+}
+
+.giftcard_container .total_price span {
+    position: absolute;
+    top: 40px;
+    right: calc(65vw / 2 - 90px);
+    color: #AF53AB;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+}
+
+.giftcard_hero {
+    border-radius: 50%;
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    top: -250px;
+    left: calc(65vw / 2 - 250px);
+    z-index: -1;
+}
+
+.amazon {
+    background: radial-gradient(100% 100% at 46.86% 0%, #FF8000 0%, #E34141 100%);
+}
+
+.apple {
+    background: linear-gradient(145.64deg, #00E0FF 9.67%, #0047FF 107.49%);
+}
+
+.steam {
+    background: linear-gradient(178.18deg, #FD749B -13.56%, #281AC8 158.3%);
+}
+
+.google {
+    background: linear-gradient(145.64deg, #99FDD9 19.86%, #1E62A2 107.49%);
+}
+
+
+.giftcard_container img {
+    margin-top: 55px;
+}
+
+button {
+    border: none;
+    margin: 25px 0px 65px 0px;
+}

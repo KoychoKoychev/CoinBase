@@ -19,11 +19,11 @@
     </ul>
     <div class="actions">
         <ul class="nav" *ngIf="hasUser">
-            <a href="#">
-                <li>Sell Bitcoin</li>
+            <a routerLink="/market/crypto">
+                <li [ngClass]="{'current':currentPage=='crypto'?true:false}">Sell Bitcoin</li>
             </a>
-            <a href="#">
-                <li>Sell Giftcard</li>
+            <a routerLink="/market/giftcards">
+                <li [ngClass]="{'current':currentPage=='giftcards'?true:false}">Sell Giftcard</li>
             </a>
         </ul>
         <ul class="auth" *ngIf="!hasUser">

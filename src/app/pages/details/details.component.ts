@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth.service';
 import { IBlogPost } from 'src/app/core/interfaces/blogPost';
 import { IPostComments } from 'src/app/core/interfaces/postComment';
@@ -24,7 +24,7 @@ export class DetailsComponent implements OnInit {
   isAuthor: boolean = false
 
 
-  constructor(private blogService: BlogService, private activateRoute: ActivatedRoute, private authService: AuthService) { }
+  constructor(private blogService: BlogService, private activateRoute: ActivatedRoute, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -72,5 +72,13 @@ export class DetailsComponent implements OnInit {
         )
       }
     );
+  }
+
+  public onDelete(): void {
+    const postId = this.post.objectId;
+    if(confirm('Do you want to delete this post?')){
+      this.blogService.deletePost(postId).subscribe();
+      this.router.navigate(['/blog'])
+    }
   }
 }

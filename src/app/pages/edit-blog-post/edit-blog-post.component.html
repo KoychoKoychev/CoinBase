@@ -1,0 +1,43 @@
+<div class="edit_container">
+    <app-header></app-header>
+    <div class="edit_wrapper">
+    <h3>Edit Blog Post</h3>
+    <span>Kindly fill all the mendatory fields marked with *</span>
+    <p class="error" *ngIf="errors">{{errors}}</p>
+    <form  #editForm="ngForm" (ngSubmit)="onSubmit()" action="" class="edit_form">
+        <input type="text" name="title" id="title" placeholder="Title*"
+        ngModel pattern="[A-Za-z0-9 ]+" #title="ngModel" required>
+
+        <p class="error" *ngIf="title.invalid && title.touched && title.control.errors">
+            {{title.control.errors['pattern'] ? 'Title must include only letters and number.' : 'Title is required!'}}
+        </p>
+
+        <input type="text" name="category" id="category" placeholder="Category*"
+        ngModel pattern="[A-Za-z]+" #category="ngModel" required>
+
+        <p class="error" *ngIf="category.invalid && category.touched && category.control.errors">
+            {{category.control.errors['pattern'] ? 'Catergory must include only letters.' : 'Catergory is required!'}}
+        </p>
+
+        <input type="text" name="imgUrl" id="imgUrl" placeholder="Image url*"
+        ngModel pattern="^https://.+$" #imgUrl="ngModel" required>
+
+        <p class="error" *ngIf="imgUrl.invalid && imgUrl.touched && imgUrl.control.errors">
+            {{imgUrl.control.errors['pattern'] ? 'Catergory must include only letters.' : 'Image url is required!'}}
+        </p>
+
+        <input type="text" name="tags" id="tags" placeholder="List of tags separated with ','"
+        ngModel #tags="ngModel">
+
+        <textarea type="text" name="content" id="content" placeholder="Content*"
+        ngModel #content="ngModel" minlength="60" required></textarea>
+
+        <p class="error" *ngIf="content.invalid && content.touched && content.control.errors">
+            {{category.control.errors ? 'Content must be at least 60 characters long.' : 'Content is required!'}}
+        </p>
+
+        <button class="primary_button" [disabled]="editForm.invalid" type="submit">Edit</button>
+    </form>
+</div>
+<app-footer></app-footer>
+</div>

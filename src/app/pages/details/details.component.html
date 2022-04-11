@@ -17,8 +17,8 @@
         <span>Share with</span><i class="fab fa-facebook"></i><i class="fab fa-twitter"></i><i class="fab fa-youtube"></i>
     </div>
     <div *ngIf="isAuthor">
-        <button class="primary_button">EDIT</button>
-        <button class="primary_button">DELETE</button>
+        <a [routerLink]="['/posts/edit',post.objectId]" class="primary_button">EDIT</a>
+        <button class="primary_button" (click)="onDelete()">DELETE</button>
     </div>
 </div>
 
