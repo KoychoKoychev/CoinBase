@@ -84,3 +84,20 @@ button {
     border: none;
     margin: 25px 0px 65px 0px;
 }
+
+.successful_transaction{
+    height: calc(100vh - 19rem);
+    font-size: 2rem;
+    text-align: center;
+    color: rgb(15, 202, 15);
+}
+
+.successful_transaction i {
+    font-size: 50px;
+    vertical-align: middle;
+}
+
+.successful_transaction a {
+    width: 200px;
+    line-height: 3rem;
+}

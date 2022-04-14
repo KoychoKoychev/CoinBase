@@ -16,6 +16,10 @@ export class BlogService {
     return this.http.get(environment.apiUrl + '/classes/Posts', { headers: environment.requestHeaders });
   }
 
+  public getLatestPosts(): Observable<any> {
+    return this.http.get(environment.apiUrl + '/classes/Posts?limit=3', { headers: environment.requestHeaders });
+  }
+
   public getCurrentPosts(postId: string): Observable<any> {
     return this.http.get(environment.apiUrl + '/classes/Posts/' + postId, { headers: environment.requestHeaders });
   }

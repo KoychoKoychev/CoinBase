@@ -1,30 +1,38 @@
 <app-header currentPage="giftcards"></app-header>
-<div class="giftcard_container">
+<div class="giftcard_container" *ngIf="!successfulTransaction">
     <div class="giftcard_hero" [ngClass]="selectedCard">
     </div>
     <img [src]="'/assets/images/' + selectedCard + '.svg'" alt="giftcard">
-    <p><b>{{conversionRatio}}{{selectedCurrency}}</b> is out conversion rate for every {{cardNames[selectedCard]}} card on this platform.</p>
+    <p><b>{{conversionRatio}}{{selectedCurrency}}</b> is out conversion rate for every {{cardNames[selectedCard]}} card
+        on this platform.</p>
     <br>
     <p>The total value you derived here will be the amount you’ll
         be receiving during the total transaction process </p>
     <p>*All the prices are based on 100$ giftcards. Please reflect the value of the card throgh the amount input.</p>
-    <select name="card_type" id="card_type" (change)="onTypeChange($event)">
-        <option value="amazon" [defaultSelected]>Amazon Giftcard</option>
-        <option value="apple">App Store & iTunes Giftcard</option>
-        <option value="steam">Steam Giftcard</option>
-        <option value="google">Google Play Giftcard</option>
-    </select>
-    <select name="currency" id="currency" (change)="onCurrencyChange($event)">
-        <option value="$" [defaultSelected]>United States Dollars</option>
-        <option value="BTC">BitCoin</option>
-        <option value="ETH">Etherium</option>
-    </select>
-    <input type="text" name="amount" placeholder="Amount" (input)="onAmountChange($event)">
-    <div class="total_price">
-        <input type="number" name="total_value" class="total_value" [value]="totalAmount" disabled>
-        <span>{{selectedCurrency}}</span>
-    </div>
+    <form #giftcardForm="ngForm" (submit)="onSubmit()" action="" class="edit_form">
+        <select name="card_type" id="card_type" (change)="onTypeChange($event)">
+            <option value="amazon" [defaultSelected]>Amazon Giftcard</option>
+            <option value="apple">App Store & iTunes Giftcard</option>
+            <option value="steam">Steam Giftcard</option>
+            <option value="google">Google Play Giftcard</option>
+        </select>
+        <select name="currency" id="currency" (change)="onCurrencyChange($event)">
+            <option value="$" [defaultSelected]>United States Dollars</option>
+            <option value="BTC">BitCoin</option>
+            <option value="ETH">Etherium</option>
+        </select>
+        <input type="text" name="amount" placeholder="Amount*" (input)="onAmountChange($event)">
+        <div class="total_price">
+            <input type="number" name="total_value" class="total_value" [value]="totalAmount" disabled>
+            <span>{{selectedCurrency}}</span>
+        </div>
 
-    <button class="primary_button">PROCEED</button>
+        <button class="primary_button">PROCEED</button>
+    </form>
+</div>
+<div *ngIf="successfulTransaction" class="successful_transaction">
+    <h3>Your transaction has been successful! <i class="fas fa-check-circle"></i></h3>
+    <a routerLink="/home" class="primary_button">HOME PAGE</a>
+    <a routerLink="/market/giftcards" (click)="sellAnother()" class="primary_button">SELL ANOTHER</a>
 </div>
 <app-footer></app-footer>
