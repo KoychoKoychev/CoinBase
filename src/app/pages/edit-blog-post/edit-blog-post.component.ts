@@ -51,8 +51,18 @@ export class EditBlogPostComponent implements OnInit {
         content: this.form.value.content.trim(),
         tags: this.form.value.tags
       }
-      this.blogService.editPost(postData, postId).subscribe();
+      this.blogService.editPost(postData, postId).subscribe(
+        response => {
+          if (response) {
+            this.router.navigate(['/blog'])
+          }
+        },
+        err => {
+          if (err.error.code === '209') {
+            this.router.navigate(['/login'])
+          }
+        }
+      );
     }
-    this.router.navigate(['/blog'])
   }
 }

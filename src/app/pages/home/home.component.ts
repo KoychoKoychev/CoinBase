@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/auth.service';
 import { IBlogPost } from 'src/app/core/interfaces/blogPost';
 import { ITransactions } from 'src/app/core/interfaces/transactions';
 import { PriceService } from 'src/app/core/price.service';
@@ -55,7 +57,12 @@ export class HomeComponent implements OnInit {
 
   apiErrors: string = ''
 
-  constructor(private priceService: PriceService, private blogService: BlogService, private transactionsService: TransactionsService) { }
+  constructor(private priceService: PriceService,
+    private blogService: BlogService,
+    private transactionsService: TransactionsService,
+    private router: Router,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
     this.priceService.getPrices().subscribe(
@@ -67,17 +74,33 @@ export class HomeComponent implements OnInit {
       },
       err => {
         this.apiErrors = err.message
-        console.error(err)
+        if (err.error.code === '209') {
+          this.router.navigate(['/login'])
+        }
       }
     );
     this.blogService.getLatestPosts().subscribe(
       response => {
         this.blogPostsArr = response.results;
+      },
+      err => {
+        this.apiErrors = err.message
+        if (err.error.code == 209) {
+          this.authService.clearStorage();
+          this.router.navigate(['/login'])
+        }
       }
     );
     this.transactionsService.getLastTransactions().subscribe(
       response => {
         this.transactionsArr = response.results
+      },
+      err => {
+        this.apiErrors = err.message
+        if (err.error.code == 209) {
+          this.authService.clearStorage();
+          this.router.navigate(['/login'])
+        }
       }
     )
   }

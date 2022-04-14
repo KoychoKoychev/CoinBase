@@ -27,6 +27,18 @@ export class AuthService {
     }
   }
 
+  public clearStorage():void{
+    this.localStorage.clear();
+  }
+
+  public getAccessToken():string{
+    if(this.localStorage.getItem('accessToken')){
+      return JSON.stringify(this.localStorage.getItem('accessToken'))
+    }else{
+      return 'Invalid access Token';
+    }
+  }
+
   public register(body: IUserData): Observable<any> {
     return this.http.post(environment.apiUrl + '/users', body, { headers: environment.requestHeaders });
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth.service';
 import { PriceService } from 'src/app/core/price.service';
 import { TransactionsService } from 'src/app/feature/transactions/transactions.service';
@@ -22,7 +23,11 @@ export class CryptoMarketComponent implements OnInit {
     ETH: 'NaN',
   }
 
-  constructor(private cryptoPriceService: PriceService, private authService: AuthService, private transactionService: TransactionsService) { }
+  constructor(private cryptoPriceService: PriceService,
+     private authService: AuthService, 
+     private transactionService: TransactionsService,
+     private router: Router
+     ) { }
 
   ngOnInit(): void {
     this.cryptoPriceService.getPrices().subscribe(
@@ -30,6 +35,11 @@ export class CryptoMarketComponent implements OnInit {
         this.currentPrices.BTC = Number(response[0].price * 0.9).toFixed(0)
         this.currentPrices.ETH = Number(response[1].price * 0.9).toFixed(0)
         this.totalAmount = (Number(this.selectedAmount) * Number(this.currentPrices[this.selectedCurrency])).toFixed(1);
+      },
+      err => {
+        if (err.error.code === '209') {
+          this.router.navigate(['/login'])
+        }
       }
     )
   }
