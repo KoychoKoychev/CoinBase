@@ -58,15 +58,15 @@
         </td>
         <td>
             <div class="exchanges_col">
-                <tr *ngFor="let action of actionsArr">
+                <tr *ngFor="let action of transactionsArr">
                     <div>
-                        <p>{{action.currencyFromLong}} {{action.currencyFromShort}}
+                        <p>{{displayData[action.currencyFrom].displayLong}}
                             <i class="fas fa-long-arrow-alt-right"></i>
-                            {{action.currencyToLong}}
+                            {{displayData[action.currencyTo].displayLong}}
                         </p>
-                        <p><b>{{action.amountFrom}}</b> {{action.currencyFromShort}}
+                        <p><b>{{action.amountFrom}}</b> {{displayData[action.currencyFrom].displayShort}}
                             <i class="fas fa-exchange-alt"></i>
-                            <b>{{action.amountTo}}</b> {{action.currencyToShort}}
+                            <b>{{action.amountTo}}</b> {{displayData[action.currencyTo].displayShort}}
                         </p>
                     </div>
                 </tr>

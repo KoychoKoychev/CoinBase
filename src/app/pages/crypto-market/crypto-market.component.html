@@ -1,1 +1,29 @@
-<p>crypto-market works!</p>
+<app-header currentPage="crypto"></app-header>
+<div class="crypto_container" *ngIf="!successfulTransaction">
+    <div class="crypto_hero" [ngClass]="selectedCurrency">
+    </div>
+    <img [src]="'/assets/images/' + selectedCurrency + '.svg'" alt="crypto">
+    <p><b>{{currentPrices[selectedCurrency]}}$</b> is out conversion rate for every {{selectedCurrency}} on this
+        platform.</p>
+    <br>
+    <p>The total value you derived here will be the amount you’ll
+        be receiving during the total transaction process </p>
+    <form #cryptoForm="ngForm" (submit)="onSubmit()" action="" class="edit_form">
+        <select name="card_type" id="card_type" (change)="onTypeChange($event)">
+            <option value="BTC" [defaultSelected]>BitCoin</option>
+            <option value="ETH">Etherium</option>
+        </select>
+        <input type="text" name="amount" placeholder="Amount" (input)="onAmountChange($event)">
+        <div class="total_price">
+            <input type="number" name="total_value" class="total_value" [value]="totalAmount" disabled>
+            <span>$</span>
+        </div>
+        <button class="primary_button">PROCEED</button>
+    </form>
+</div>
+<div *ngIf="successfulTransaction" class="successful_transaction">
+    <h3>Your transaction has been successful! <i class="fas fa-check-circle"></i></h3>
+    <a routerLink="/home" class="primary_button">HOME PAGE</a>
+    <a routerLink="/market/crypto" (click)="sellAnother()" class="primary_button">SELL ANOTHER</a>
+</div>
+<app-footer></app-footer>
