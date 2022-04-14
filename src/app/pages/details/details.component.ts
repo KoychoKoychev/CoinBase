@@ -22,11 +22,15 @@ export class DetailsComponent implements OnInit {
   formSubmitted: boolean = false
   postComments: IPostComments[] = []
   isAuthor: boolean = false
-
+  hasUser: boolean = false
 
   constructor(private blogService: BlogService, private activateRoute: ActivatedRoute, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+
+    if (this.authService.hasUser()) {
+      this.hasUser = true;
+    }
 
     const postId = this.activateRoute.snapshot.params['postId'];
 
@@ -76,7 +80,7 @@ export class DetailsComponent implements OnInit {
 
   public onDelete(): void {
     const postId = this.post.objectId;
-    if(confirm('Do you want to delete this post?')){
+    if (confirm('Do you want to delete this post?')) {
       this.blogService.deletePost(postId).subscribe();
       this.router.navigate(['/blog'])
     }

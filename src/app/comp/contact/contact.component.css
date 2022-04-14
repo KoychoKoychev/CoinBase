@@ -1,0 +1,21 @@
+.comment{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #AF53AB;
+    margin-bottom: 5px;
+}
+
+
+.comment h3{
+    display: inline-block;
+}
+
+.comment p{
+    display: inline;
+    margin-left: 1rem;
+}
+
+.comment a{
+    line-height: 3rem;
+}

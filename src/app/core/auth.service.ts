@@ -19,22 +19,22 @@ export class AuthService {
     }
   }
 
-  public getUserId():string{
-    if(this.localStorage.getItem('userId')){
+  public getUserId(): string {
+    if (this.localStorage.getItem('userId')) {
       return JSON.stringify(this.localStorage.getItem('userId'))
-    }else{
+    } else {
       return 'Invalid user id';
     }
   }
 
-  public clearStorage():void{
+  public clearStorage(): void {
     this.localStorage.clear();
   }
 
-  public getAccessToken():string{
-    if(this.localStorage.getItem('accessToken')){
+  public getAccessToken(): string {
+    if (this.localStorage.getItem('accessToken')) {
       return JSON.stringify(this.localStorage.getItem('accessToken'))
-    }else{
+    } else {
       return 'Invalid access Token';
     }
   }
@@ -45,11 +45,19 @@ export class AuthService {
   public login(body: any): Observable<any> {
     return this.http.get(environment.apiUrl + '/login' + `?username=${body.username}&password=${body.password}`, { headers: environment.requestHeaders });
   }
-  public logout():void{
+  public logout(): void {
     this.localStorage.clear();
   }
 
-  public postContact(data:any): Observable<any> {
-    return this.http.post(environment.apiUrl + '/classes/Contacts',data, { headers: environment.requestHeaders })
+  public postContact(data: any): Observable<any> {
+    return this.http.post(environment.apiUrl + '/classes/Contacts', data, { headers: environment.requestHeaders })
+  }
+
+  public getContacts(): Observable<any> {
+    return this.http.get(environment.apiUrl + '/classes/Contacts', { headers: environment.requestHeaders })
+  }
+
+  public deleteContact(contactId: string): Observable<any> {
+    return this.http.delete(environment.apiUrl + '/classes/Contacts/' + contactId, { headers: environment.requestHeaders })
   }
 }
