@@ -15,7 +15,7 @@ export class GiftcardMarketComponent implements OnInit {
 
 
   selectedCard: string = 'amazon'
-  successfulTransaction: boolean = true;
+  successfulTransaction: boolean = false;
   selectedCurrency: string = '$'
   conversionRatio: Number = 0;
   totalAmount: string = '0';

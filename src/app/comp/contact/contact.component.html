@@ -1,0 +1,10 @@
+<div class="comment" *ngIf="isNotDeleted">
+    <div>
+        <h3>{{author}}: </h3>
+        <p> {{content}}</p>
+    </div>
+    <div>
+        <a class="primary_button" [href]="mailto">REPLY</a>
+        <a class="primary_button" [routerLink]="['/contacts']" (click)="onDelete()">DELETE</a>
+    </div>
+</div>

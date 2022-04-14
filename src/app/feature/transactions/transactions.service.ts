@@ -19,6 +19,11 @@ export class TransactionsService {
   }
 
   getLastTransactions(): Observable<any> {
-    return this.http.get(environment.apiUrl + '/classes/Transactions/?limit=10', { headers: environment.requestHeaders })
+    const postData = {
+      'order':'-createdAt',
+      'where': {},
+      '_method': 'GET'
+    }
+    return this.http.post(environment.apiUrl + '/classes/Transactions/?limit=10', postData , { headers: environment.requestHeaders })
   }
 }

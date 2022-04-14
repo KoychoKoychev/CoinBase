@@ -35,13 +35,13 @@
     </div>
 </div>
 
-<div class="comments_form">
+<div class="comments_form" *ngIf="hasUser">
     <h3>Leave a Comment</h3>
     <p>Your email address will not be published. Required fields are marked with *</p>
     <form *ngIf="!formSubmitted" #commentsForm="ngForm" class="contact_form" action="" method="">
-        <input type="text" placeholder="Name *" name="name" ngModel #name="ngModel" required>
+        <input type="text" placeholder="Name *" name="name" ngModel #name="ngModel" minlength="5" required>
         <input type="email" placeholder="Email *" name="email" ngModel #email="ngModel" email required>
-        <textarea placeholder="Your Comment" name="text" ngModel #text="ngModel" required></textarea>
+        <textarea placeholder="Your Comment" name="text" ngModel #text="ngModel" minlength="15" required></textarea>
         <button type="button" (click)="onClick()" [disabled]="commentsForm.invalid"
             class="primary_button">Publish</button>
     </form>

@@ -1,4 +1,5 @@
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './core/auth.guard';
 import { AboutComponent } from './pages/about/about.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { ContactsComponent } from './pages/contacts/contacts.component';
@@ -43,6 +44,7 @@ const routes: Routes = [
   },
   {
     path: 'posts/edit/:postId',
+    canActivate:[AuthGuard],
     component: EditBlogPostComponent
   },
   {
@@ -51,14 +53,17 @@ const routes: Routes = [
   },
   {
     path: 'blog/create',
+    canActivate:[AuthGuard],
     component: CreateBlogPostComponent
   },
   {
     path: 'market/giftcards',
+    canActivate:[AuthGuard],
     component: GiftcardMarketComponent
   },
   {
     path: 'market/crypto',
+    canActivate:[AuthGuard],
     component: CryptoMarketComponent
   },
 ];

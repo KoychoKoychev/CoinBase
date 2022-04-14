@@ -84,3 +84,20 @@ button:disabled{
     color: darkgray;
     background: lightgray;
 }
+
+.comment_section{
+    width: 65vw;
+    margin: 30px auto;
+    border: 1px solid lightgray;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.comment_section h3{
+    font-size: 1.5rem;
+    margin: 0px;
+    background: linear-gradient(178.18deg, #FD749B -13.56%, #281AC8 158.3%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
