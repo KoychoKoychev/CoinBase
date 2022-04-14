@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth.service';
 import { TransactionsService } from 'src/app/feature/transactions/transactions.service';
 
@@ -41,7 +42,11 @@ export class GiftcardMarketComponent implements OnInit {
     'ETH': 'ETH',
   }
 
-  constructor(private transactionsService: TransactionsService, private authService: AuthService, private transactionService: TransactionsService) { }
+  constructor(private transactionsService: TransactionsService,
+    private authService: AuthService,
+    private transactionService: TransactionsService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.transactionsService.getCurrentRatios(this.priceIds[this.selectedCard]).subscribe(
@@ -49,6 +54,11 @@ export class GiftcardMarketComponent implements OnInit {
         this.currentPrices = response
         this.conversionRatio = this.currentPrices[this.currencyKeys[this.selectedCurrency]];
         this.updateTotalAmount()
+      },
+      err => {
+        if (err.error.code === '209') {
+          this.router.navigate(['/login'])
+        }
       }
     );
   }

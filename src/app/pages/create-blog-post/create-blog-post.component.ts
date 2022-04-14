@@ -32,7 +32,14 @@ export class CreateBlogPostComponent implements OnInit {
       }
       this.blogService.createPost(postData).subscribe(
         response => {
-          this.router.navigate(['blog'])
+          if (response) {
+            this.router.navigate(['blog'])
+          }
+        },
+        err => {
+          if (err.error.code === '209') {
+            this.router.navigate(['/login'])
+          }
         }
       )
     } else {
