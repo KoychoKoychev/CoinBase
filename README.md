@@ -14,13 +14,22 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Fuctionality and features
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+The application is based on various crypto trading platforms. It has a blog feature and transaction feature.
+In order to have full access to the application you need to be authenticated.
+Account credentials that can be used for the authentication:
+Username: `hcleric`
+Password: `111111`
 
-## Running end-to-end tests
+### Blog feature
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+The blog feature consists of a page with the blog posts that has a short description of the posts and any images attached to them. Each post has a details page that has the full information about the post and a comment section. The comments are shown below the content of the post and can be read by any user but only an authenticated user can post one.
+The owner/creator of every post can edit and delete its post. This functionality is available only for the author/creator.
+
+### Transaction feature
+
+The transaction feature consists of options to sell Giftcards and Crypto currency through the platform. Each transaction is recorded and can be seen in the Home page. This functionality is only available to the authenticated users.
 
 ## Further help
 
