@@ -81,7 +81,7 @@ export class HomeComponent implements OnInit {
     );
     this.blogService.getLatestPosts().subscribe(
       response => {
-        this.blogPostsArr = response.results;
+        this.blogPostsArr = response.results.sort((a:any,b:any)=>b.createdAt.localeCompare(a.createdAt));
       },
       err => {
         this.apiErrors = err.message

@@ -19,7 +19,7 @@ export class BlogComponent implements OnInit {
   ngOnInit(): void {
     this.hasUser = this.authService.hasUser();
     this.blogServise.getAllPosts().subscribe(
-      response => this.postsArr = response.results,
+      response => this.postsArr = response.results.sort((a:IBlogPost,b:IBlogPost)=>b.createdAt.localeCompare(a.createdAt)),
       err => {
         if (err.error.code === '209') {
           this.router.navigate(['/login'])
