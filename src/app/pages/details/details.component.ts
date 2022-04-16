@@ -82,7 +82,7 @@ export class DetailsComponent implements OnInit {
     const postId = this.post.objectId;
     if (confirm('Do you want to delete this post?')) {
       this.blogService.deletePost(postId).subscribe();
-      this.router.navigate(['/blog'])
+      this.router.navigate(['/'])
     }
   }
 }
